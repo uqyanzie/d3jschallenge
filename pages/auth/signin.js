@@ -32,9 +32,11 @@ const Signin = ({ providers }) => {
             >
                 <div className="p-5 bg-white md:flex-1">
                     <h3 className="my-4 text-2xl font-semibold text-gray-700">Login</h3>
-                    <h4 className="text-red-600">
-                        {!!error && <p>{error}, Can't log in</p>}
-                    </h4>
+                    {error && (
+                        <p>
+                            Can&apos;t Log in
+                        </p>
+                    )}
                     <form  onSubmit={handleSubmit} className="flex flex-col space-y-5">
                         <div className="flex flex-col space-y-1">
                             <label htmlFor="email" className="text-sm font-semibold text-gray-500">Email address</label>
