@@ -5,10 +5,6 @@ export const authOptions = {
     secret: process.env.NextAuth_SECRET,
     // Configure one or more authentication providers
     providers: [
-        GithubProvider({
-            clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET,
-        }),
         CredentialsProvider({
             // The name to display on the sign in form (e.g. "Sign in with...")
             name: "Credentials",
@@ -50,6 +46,7 @@ export const authOptions = {
         }),
         // ...add more providers here
     ],
+    secret: process.env.NextAuth_SECRET,
     callbacks: {
         async jwt({ token, user }) {
             return { ...token, ...user };
