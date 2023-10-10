@@ -12,7 +12,7 @@ const Signin = ({ providers }) => {
         const _target = e.target;
         const email = _target.email.value;
         const password = _target.password.value;
-        const callbackUrl = '/dashboard'
+        const callbackUrl = '/'
         const result = await signIn("credentials", {
           email,
           password,
