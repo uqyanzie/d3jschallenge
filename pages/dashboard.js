@@ -163,7 +163,7 @@ export default function Dashboard() {
                 .text(function (d) {
                     return d;
                 });
-
+ 
             // Legend rendering using D3's data binding
             var legendContainer = d3.select("#legend").append("div").attr("class", "legend-grid");
 
