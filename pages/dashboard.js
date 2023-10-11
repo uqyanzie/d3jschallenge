@@ -69,15 +69,17 @@ export default function Dashboard() {
                 });
             });
 
-            var width = 1700;
-            var height = 1700;
+            var width = 1750;
+            var height = 1800;
             var nodeSpacing = 30;
             var totalNodeHeight = nodes.length * nodeSpacing;
-            var startY = (height - totalNodeHeight) / 2;
+            var startY = (height - totalNodeHeight) / 2;      
 
             var svg = d3.select("#container").append("svg")
                 .attr("width", width)
-                .attr("height", height);
+                .attr("height", height)
+                .attr("viewBox", [0, 0, width, height])
+                .attr("style", "max-width: 100%; height: auto;");
             var nodeValues = {};
             dataArray.forEach(function (item) {
                 nodeValues[item[0]] = (nodeValues[item[0]] || 0) + item[2];
@@ -88,6 +90,7 @@ export default function Dashboard() {
                 .data(links)
                 .enter().append("path")
                 .attr("class", "link")
+                .attr("fill", "none")
                 .attr("d", function (d) {
                     return [
                         "M", width / 2, startY + d.source * nodeSpacing,
@@ -183,15 +186,15 @@ export default function Dashboard() {
 
     return (
         <div>
-            <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-white">D3js Arc Demo</h1>
+            <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-white">D3js Arc Demo</h1>
             <input id="jsonFileInput" type="file" style={{ display: 'none' }} />
             <div>
-                <button onClick={() => selectFile()} style={{ backgroundColor: 'blue', padding: 10, borderRadius: 15 }}>Upload JSON File</button>
+                <button onClick={() => selectFile()} style={{ backgroundColor: 'blue', padding: 10, borderRadius: 15, color: 'white', marginBottom:'4px' }}>Upload JSON File</button>
             </div>
 
-            <pre id="jsonContent"></pre>
+            <pre id="jsonContent" style={{ display: 'none' }}></pre>
             <div id="container"></div>
-            <div id="legend"></div>
+            <div id="legend" style={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}></div>
         </div>
     )
 }
